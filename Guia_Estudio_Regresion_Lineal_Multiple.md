@@ -189,19 +189,19 @@ La prueba de significancia global evalúa si existe al menos una variable regres
 1. **Contextualización:** Determinar si existe relación lineal estadísticamente significativa entre la variable dependiente $y$ y el conjunto de $k$ variables regresoras $(x_1, x_2, \dots, x_k)$.
 2. **Hipótesis Nula ($H_0$):**
    $$H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0$$
-   *(Ninguna variable regresora aporta información explicativa; el modelo no es válido).*
+   *(Ninguna variable regresora aporta información explicativa; el modelo no es válido).* 
 3. **Hipótesis Alternativa ($H_1$):**
    $$H_1: \beta_j \neq 0 \quad \text{para al menos un } j \in \{1, 2, \dots, k\}$$
-   *(Al menos una de las variables explicativas influye significativamente en $y$).*
+   *(Al menos una de las variables explicativas influye significativamente en $y$).* 
 4. **Nivel de Significancia:** $\alpha$ (comúnmente $\alpha = 0.05$ o $\alpha = 0.01$).
 5. **Estadístico de Prueba:**
-   $$F_0 = \frac{MS_R}{MS_E} = \frac{SS_R / k}{SS_E / (n - p)} \sim F_{(k, \, n-p)}$$
+   $$F_0 = \frac{MS_R}{MS_E} = \frac{SS_R / k}{SS_E / (n - p)} \sim F_{(k, \; n-p)}$$
    Bajo $H_0$, este estadístico sigue una distribución $F$ de Fisher-Snedecor con $k$ grados de libertad en el numerador y $n - p$ grados de libertad en el denominador.
 6. **Regla de Decisión:**
    * **Por Región Crítica:** Se rechaza $H_0$ si:
-     $$F_0 > F_{\alpha; \, k, \, n-p}$$
+     $$F_0 > F_{\alpha; \; k, \; n-p}$$
    * **Por Valor $p$:** Se rechaza $H_0$ si:
-     $$\text{Valor } p = P(F_{k, \, n-p} \ge F_0) < \alpha$$
+     $$\text{Valor } p = P(F_{k, \; n-p} \ge F_0) < \alpha$$
 7. **Cálculos y Sustitución Numérica:**
    Presentar explícitamente $SS_R, SS_E, MS_R, MS_E$, el valor numérico obtenido para $F_0$, el valor crítico de la tabla $F$ y el valor $p$.
 8. **Decisión y Conclusión en el Contexto:**
@@ -217,18 +217,18 @@ Una vez comprobado que el modelo global es significativo, es imperativo evaluar 
 1. **Parámetro de Interés:** El coeficiente parcial de regresión $\beta_j$ correspondiente al regresor $x_j$ en presencia de las restantes variables del modelo.
 2. **Hipótesis Nula ($H_0$):**
    $$H_0: \beta_j = 0$$
-   *(La variable $x_j$ no aporta información lineal significativa a la predicción de $y$ una vez consideradas las otras variables regresoras).*
+   *(La variable $x_j$ no aporta información lineal significativa a la predicción de $y$ una vez consideradas las otras variables regresoras).* 
 3. **Hipótesis Alternativa ($H_1$):**
    $$H_1: \beta_j \neq 0$$
-   *(La variable $x_j$ sí aporta significativamente al modelo; prueba bilateral).*
+   *(La variable $x_j$ sí aporta significativamente al modelo; prueba bilateral).* 
 4. **Nivel de Significancia:** $\alpha$ (en una prueba bilateral, el área en cada cola de la distribución es $\alpha / 2$).
 5. **Estadístico de Prueba:**
    $$T_0 = \frac{\hat{\beta}_j - 0}{SE(\hat{\beta}_j)} = \frac{\hat{\beta}_j}{\sqrt{\hat{\sigma}^2 C_{jj}}} \sim t_{(n - p)}$$
    Donde $C_{jj}$ es el $j$-ésimo elemento diagonal de la matriz inversa $\mathbf{C} = (\mathbf{X}'\mathbf{X})^{-1}$, y $\hat{\sigma}^2 = MS_E$.
 6. **Regla de Decisión (Región Crítica Bilateral):**
    * Se rechaza $H_0$ si:
-     $$|T_0| > t_{\alpha/2, \, n-p}$$
-     Es decir, si $T_0 < -t_{\alpha/2, \, n-p}$ o si $T_0 > +t_{\alpha/2, \, n-p}$.
+     $$|T_0| > t_{\alpha/2, \; n-p}$$
+     Es decir, si $T_0 < -t_{\alpha/2, \; n-p}$ o si $T_0 > +t_{\alpha/2, \; n-p}$.
    * Equivalentemente por valor $p$: Se rechaza $H_0$ si $\text{Valor } p = 2 \cdot P(t_{n-p} \ge |T_0|) < \alpha$.
 7. **Cálculos Paso a Paso con Sustitución Numérica:**
    $$\text{Estimado puntual: } \hat{\beta}_j$$
@@ -246,11 +246,11 @@ Una vez comprobado que el modelo global es significativo, es imperativo evaluar 
 
 Un Intervalo de Confianza al $(1 - \alpha) \cdot 100\%$ para el coeficiente de regresión $\beta_j$ está dado por:
 
-$$IC_{1-\alpha}(\beta_j): \hat{\beta}_j \pm t_{\alpha/2, \, n-p} \cdot SE(\hat{\beta}_j) = \left[ \hat{\beta}_j - t_{\alpha/2, \, n-p} \sqrt{\hat{\sigma}^2 C_{jj}} \; ; \; \hat{\beta}_j + t_{\alpha/2, \, n-p} \sqrt{\hat{\sigma}^2 C_{jj}} \right]$$
+$$IC_{1-\alpha}(\beta_j): \hat{\beta}_j \pm t_{\alpha/2, \; n-p} \cdot SE(\hat{\beta}_j) = \left[ \hat{\beta}_j - t_{\alpha/2, \; n-p} \sqrt{\hat{\sigma}^2 C_{jj}} \; ; \; \hat{\beta}_j + t_{\alpha/2, \; n-p} \sqrt{\hat{\sigma}^2 C_{jj}} \right]$$
 
 ### Teorema de Equivalencia Matemática
 Existe una relación unívoca entre la prueba de hipótesis bilateral y el intervalo de confianza:
-$$\text{No Rechazar } H_0: \beta_j = 0 \iff 0 \in IC_{1-\alpha}(\beta_j) \iff |T_0| \le t_{\alpha/2, \, n-p} \iff \text{Valor } p \ge \alpha$$
+$$\text{No Rechazar } H_0: \beta_j = 0 \iff 0 \in IC_{1-\alpha}(\beta_j) \iff |T_0| \le t_{\alpha/2, \; n-p} \iff \text{Valor } p \ge \alpha$$
 
 * Si el intervalo de confianza **contiene al número cero** (el límite inferior es negativo y el superior es positivo), significa que el cero es un valor plausible para el verdadero parámetro $\beta_j$. Por consiguiente, la variable no es significativa.
 * Si el intervalo de confianza **no contiene al cero** (ambos límites son estrictamente positivos o ambos son estrictamente negativos), se rechaza con total certeza $H_0: \beta_j = 0$.
@@ -343,9 +343,9 @@ Amplitud: Estrecha                                    Amplitud: Amplia (incluye 
 ```
 
 1. **Intervalo de Confianza para la Respuesta Media $E(y | \mathbf{x}_0)$:**
-   $$IC_{1-\alpha}(E(y|\mathbf{x}_0)): \hat{y}_0 \pm t_{\alpha/2, \, n-p} \sqrt{\hat{\sigma}^2 \, h_0}$$
+   $$IC_{1-\alpha}(E(y|\mathbf{x}_0)): \hat{y}_0 \pm t_{\alpha/2, \; n-p} \sqrt{\hat{\sigma}^2 \, h_0}$$
 2. **Intervalo de Predicción para una Observación Futura Individual $y_0$:**
-   $$IP_{1-\alpha}(y_0): \hat{y}_0 \pm t_{\alpha/2, \, n-p} \sqrt{\hat{\sigma}^2 \, (1 + h_0)}$$
+   $$IP_{1-\alpha}(y_0): \hat{y}_0 \pm t_{\alpha/2, \; n-p} \sqrt{\hat{\sigma}^2 \, (1 + h_0)}$$
 
 > [!CAUTION]
 > **Peligro de la Extrapolación:** El hiperplano ajustado solo es válido dentro del dominio de interpolación delimitado por la nube de puntos muestral. Intentar predecir fuera de los rangos $[\min(x_j), \max(x_j)]$ produce un $h_0$ muy elevado y una drástica pérdida de fiabilidad física en las predicciones.
@@ -367,11 +367,11 @@ Amplitud: Estrecha                                    Amplitud: Amplia (incluye 
 | **Coeficiente $R^2$ Ajustado** | $R^2_{\text{adj}} = 1 - \frac{MS_E}{MS_T} = 1 - \left(\frac{n-1}{n-p}\right)(1 - R^2)$ |
 | **Error Estándar de $\hat{\beta}_j$** | $SE(\hat{\beta}_j) = \sqrt{\hat{\sigma}^2 C_{jj}} = \sqrt{MS_E \cdot C_{jj}}$ |
 | **Estadístico $t_0$ Individual** | $T_0 = \frac{\hat{\beta}_j}{SE(\hat{\beta}_j)} = \frac{\hat{\beta}_j}{\sqrt{MS_E \cdot C_{jj}}}$ |
-| **Intervalo de Confianza para $\beta_j$** | $\hat{\beta}_j \pm t_{\alpha/2, \, n-p} \cdot \sqrt{MS_E \cdot C_{jj}}$ |
+| **Intervalo de Confianza para $\beta_j$** | $\hat{\beta}_j \pm t_{\alpha/2, \; n-p} \cdot \sqrt{MS_E \cdot C_{jj}}$ |
 | **VIF (Factor Inflación Varianza)** | $VIF_j = \frac{1}{1 - R_j^2}$ |
 | **Apalancamiento de $\mathbf{x}_0$** | $h_0 = \mathbf{x}_0' \mathbf{C} \, \mathbf{x}_0$ |
-| **IC para la Media $E(y|\mathbf{x}_0)$** | $\hat{y}_0 \pm t_{\alpha/2, \, n-p} \sqrt{MS_E \cdot h_0}$ |
-| **IP para una Observación $y_0$** | $\hat{y}_0 \pm t_{\alpha/2, \, n-p} \sqrt{MS_E \cdot (1 + h_0)}$ |
+| **IC para la Media $E(y|\mathbf{x}_0)$** | $\hat{y}_0 \pm t_{\alpha/2, \; n-p} \sqrt{MS_E \cdot h_0}$ |
+| **IP para una Observación $y_0$** | $\hat{y}_0 \pm t_{\alpha/2, \; n-p} \sqrt{MS_E \cdot (1 + h_0)}$ |
 
 ---
 
@@ -380,7 +380,7 @@ Amplitud: Estrecha                                    Amplitud: Amplia (incluye 
 ### Pregunta 1
 **Enunciado:** En un modelo de RLM con $n = 35$ observaciones y $k = 4$ variables regresoras, el investigador obtiene $SS_T = 1200$ y $SS_E = 300$.
 a) Calcule el valor del estadístico $F_0$ de significancia global.  
-b) Con $\alpha = 0.05$ (donde $F_{0.05; \, 4, \, 30} = 2.69$), ¿cuál es la decisión estadística?
+b) Con $\alpha = 0.05$ (donde $F_{0.05; \; 4, \; 30} = 2.69$), ¿cuál es la decisión estadística?
 
 **Respuesta Argumentada:**
 1. Datos: $n = 35, k = 4, p = k + 1 = 5, gl_E = n - p = 35 - 5 = 30, gl_R = k = 4$.
@@ -390,7 +390,7 @@ b) Con $\alpha = 0.05$ (donde $F_{0.05; \, 4, \, 30} = 2.69$), ¿cuál es la dec
    $$MS_E = \frac{SS_E}{n - p} = \frac{300}{30} = 10$$
 4. Estadístico:
    $$F_0 = \frac{MS_R}{MS_E} = \frac{225}{10} = 22.5$$
-5. Decisión: Como $F_0 = 22.5 > F_{0.05; \, 4, \, 30} = 2.69$, se rechaza contundentemente $H_0$. El modelo es altamente significativo con un 95% de confianza.
+5. Decisión: Como $F_0 = 22.5 > F_{0.05; \; 4, \; 30} = 2.69$, se rechaza contundentemente $H_0$. El modelo es altamente significativo con un 95% de confianza.
 
 ---
 
@@ -405,7 +405,7 @@ b) Con $\alpha = 0.05$ (donde $F_{0.05; \, 4, \, 30} = 2.69$), ¿cuál es la dec
 ---
 
 ### Pregunta 3
-**Enunciado:** Para un regresor $x_2$, se obtuvo un estimado $\hat{\beta}_2 = -4.50$. La varianza residual del modelo es $MS_E = 16$ y el elemento diagonal correspondiente en la matriz inversa es $C_{22} = 0.0625$. Los grados de libertad residuales son 20. Con $\alpha = 0.05$ ($t_{0.025, \, 20} = 2.086$):
+**Enunciado:** Para un regresor $x_2$, se obtuvo un estimado $\hat{\beta}_2 = -4.50$. La varianza residual del modelo es $MS_E = 16$ y el elemento diagonal correspondiente en la matriz inversa es $C_{22} = 0.0625$. Los grados de libertad residuales son 20. Con $\alpha = 0.05$ ($t_{0.025, \; 20} = 2.086$):
 a) Calcule el error estándar $SE(\hat{\beta}_2)$.  
 b) Realice el contraste de hipótesis $H_0: \beta_2 = 0$ vs $H_1: \beta_2 \neq 0$.  
 c) Construya el Intervalo de Confianza al 95% y verifique la decisión.
